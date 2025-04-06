@@ -1,0 +1,17 @@
+name: Déploiement via FTP
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Déployer via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ftpupload.net
+          username: epiz_XXXXXXX
+          password: TON-MOT-DE-PASSE
