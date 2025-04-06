@@ -14,8 +14,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.1
       with:
         server: ftp.infinityfree.net
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        username: ${{ epiz_if0_38687649 }}
+        password: ${{ Zinkrobin1 }}
         local-dir: ./www/  # Chemin vers vos fichiers PHP dans WAMP
         server-dir: ./htdocs/  # Dossier cible sur InfinityFree
         exclude: |
