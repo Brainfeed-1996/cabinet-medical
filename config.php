@@ -1,10 +1,9 @@
-<?php include("config.php"); ?>
-
 <?php
-$host = "ftp.infinityfree.net"; // Change avec ton vrai serveur SQL
-$user = "if0_38687649"; // Ton identifiant MySQL trouvé sur InfinityFree
-$password = "Zinkrobin1"; // Ton mot de passe MySQL
-$dbname = "if0_38687649_cabinetmedical"; // Nom de ta base MySQL
+// Configuration MySQL (port 3306 par défaut, pas besoin de le spécifier généralement)
+$host = "sql108.infinityfree.com";  // Serveur MySQL d'InfinityFree (remplacez XXX)
+$user = "if0_38687649";      // Identifiant MySQL
+$password = "Zinkrobin1";    // Mot de passe MySQL
+$dbname = "if0_38687649_cabinetmedical"; // Nom de la base
 
 // Connexion à la base
 $conn = new mysqli($host, $user, $password, $dbname);
