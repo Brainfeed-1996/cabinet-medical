@@ -1,3 +1,6 @@
+
+define('IN_PUBLIC', true);
+require_once __DIR__ . '/../config.php';
 <?php include("config.php"); ?>
 
 <?php
