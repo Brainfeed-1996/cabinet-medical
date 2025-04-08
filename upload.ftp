@@ -1,0 +1,7 @@
+open ftpupload.net 8080
+user if0_38687649 Zinkrobin1
+binary
+lcd D:\Documents\Téléchargements\cabinet-medical\cabinet-medical\cabinet_medical
+cd htdocs/public
+mput *
+quit
