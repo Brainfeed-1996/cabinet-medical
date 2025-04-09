@@ -1,24 +1,39 @@
 <?php
 /**
- * Point d'entrée principal - Redirection vers /public/
- * Path: /htdocs/index.php
+ * Point d'entrée sécurisé - Redirection vers /public/
  */
-
-// Chemin relatif vérifié
-$target = '/public/index.php';
+$basePath = '/'; // À adapter si sous-dossier
+$target = $basePath . 'public/index.php';
 $fullPath = __DIR__ . $target;
 
-if (file_exists($fullPath)) {
-    // Log l'accès racine
-    file_put_contents(__DIR__ . '/logs/access.log', date('[Y-m-d H:i:s]') . " Root access redirected\n", FILE_APPEND);
-    
-    // Redirection permanente
-    header("Location: {$target}", true, 301);
-    exit();
+// Log sécurisé
+$logPath = __DIR__ . '/private/logs/access.log';
+if (!is_dir(dirname($logPath))) {
+    mkdir(dirname($logPath), 0750, true);
 }
 
-// Gestion d'erreur améliorée
+file_put_contents(
+    $logPath,
+    sprintf(
+        "[%s] %s\n",
+        date('Y-m-d H:i:s'),
+        $_SERVER['REMOTE_ADDR'] . ' ' . ($_SERVER['HTTP_REFERER'] ?? 'direct')
+    ),
+    FILE_APPEND | LOCK_EX
+);
+
+// Redirection
+if (file_exists($fullPath)) {
+    header("Location: " . filter_var($target, FILTER_SANITIZE_URL), true, 301);
+    exit;
+}
+
+// Fallback sécurisé
 http_response_code(500);
-include(__DIR__ . '/public/error.php');
-exit();
+if (file_exists(__DIR__ . '/public/error.php')) {
+    include __DIR__ . '/public/error.php';
+} else {
+    header('Content-Type: text/plain');
+    die('Erreur interne : configuration invalide');
+}
 ?>

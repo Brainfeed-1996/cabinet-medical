@@ -1,0 +1,7 @@
+[2023-11-15 14:30:45] PHP_FATAL: Uncaught Error: Call to undefined function mysql_connect() in /var/www/app.php:10
+Stack trace:
+#0 {main}
+
+[2023-11-15 14:31:22] PHP_WARNING: file_get_contents(/config.json): failed to open stream: Permission denied in /var/www/lib/utils.php:45
+
+[2023-11-15 14:32:01] PHP_EXCEPTION: Stripe API Error - Invalid API Key (Request ID: req_abc123)

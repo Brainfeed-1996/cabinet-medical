@@ -1,0 +1,14 @@
+﻿{
+    "extra": {
+        "monolog": {
+            "handlers": {
+                "rotating_file": {
+                    "type": "rotating_file",
+                    "path": "logs/app.log",
+                    "max_files": 7,
+                    "level": "debug"
+                }
+            }
+        }
+    }
+}

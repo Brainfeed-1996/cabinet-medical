@@ -1,4 +1,13 @@
+// index.php ou config.php
 <?php
+// Configurer le fichier de log PHP
+ini_set('error_log', __DIR__ . '/logs/php_errors.log');
+ini_set('log_errors', 1);
+ini_set('display_errors', 0); // Désactiver en production
+
+// Autoloaders, routes, etc...
+require 'app.php';
+
 /**
  * Configuration MySQL sécurisée pour cabinet médical
  * Path: /htdocs/config.php

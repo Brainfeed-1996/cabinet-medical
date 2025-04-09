@@ -1,13 +1,2 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Rediriger la racine vers /public/index.php
-    RewriteRule ^$ /public/index.php [L]
-    
-    # Si la requête n'est pas pour un fichier/dossier existant
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    
-    # Rediriger vers /public/index.php avec les paramètres
-    RewriteRule ^(.*)$ /public/index.php?url=$1 [L,QSA]
-</IfModule>
+RewriteEngine On
+RewriteRule ^$ public/index.php [L]

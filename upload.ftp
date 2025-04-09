@@ -1,7 +1,8 @@
-open ftpupload.net 8080
-user if0_38687649 Zinkrobin1
-binary
-lcd D:\Documents\Téléchargements\cabinet-medical\cabinet-medical\cabinet_medical
+open ftpupload.net
+if0_38687649  # Votre vrai nom d'utilisateur FTP (pas MySQL)
+Zinkrobin1     # Votre mot de passe FTP
 cd htdocs/public
+lcd "D:\Documents\Téléchargements\cabinet-medical\public"
+binary
 mput *
 quit
