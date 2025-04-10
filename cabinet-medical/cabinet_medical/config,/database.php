@@ -1,27 +1,24 @@
 <?php
-/**
- * Configuration de la connexion à la base de données
- * Serveur InfinityFree
- */
-define('DB_HOST', 'sql108.infinityfree.com');
-define('DB_NAME', 'if0_38687649_cabinetmedical');
-define('DB_USER', 'if0_38687649');
-define('DB_PASS', 'Zinkrobin1'); // Mot de passe réel inséré ici
+// Configuration dans un fichier séparé (à créer)
+$config = [
+    'db_host' => 'sql108.infinityfree.com',
+    'db_name' => 'if0_38687649_cabinetmedical',
+    'db_user' => 'if0_38687649',
+    'db_pass' => 'Zinkrobin1'
+];
 
 try {
-    $db = new PDO(
-        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8",
-        DB_USER,
-        DB_PASS,
+    $pdo = new PDO(
+        "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4",
+        $config['db_user'],
+        $config['db_pass'],
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
         ]
     );
-} catch(PDOException $e) {
-    // Journalisation de l'erreur (à adapter selon votre environnement)
-    error_log("Erreur de connexion DB: " . $e->getMessage());
-    
-    // Message générique pour l'utilisateur
-    die("Impossible de se connecter à la base de données. Veuillez réessayer plus tard.");
+} catch (PDOException $e) {
+    error_log("Erreur DB: " . $e->getMessage());
+    die("Service temporairement indisponible");
 }

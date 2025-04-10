@@ -1,0 +1,12 @@
+{
+    "database": {
+        "host": "sql108.infinityfree.com",
+        "name": "if0_38687649_cabinetmedical",
+        "user": "if0_38687649",
+        "password": "Zinkrobin1"
+    },
+    "stripe": {
+        "test_key": "pk_test_...",
+        "live_key": "pk_live_..."
+    }
+}
