@@ -17,6 +17,9 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 RUN a2enmod rewrite
 COPY .htaccess /var/www/html/.htaccess
 
+# Configuration du ServerName pour Apache
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Configuration du répertoire de travail
 WORKDIR /var/www/html
 
