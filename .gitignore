@@ -1,13 +1,33 @@
-.qodo
+# Fichiers de configuration sensibles
 .env
 .env.local
 .env.*.local
-/vendor/
-/node_modules/
+config.json
+filezilla_config.xml
+
+# Dossiers de logs et données
+/logs/
+/private/
 *.log
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
 .DS_Store
 Thumbs.db
-.github/workflows/
-filezilla_config.xml
-logs/
-*.xml
+
+# Dossiers de dépendances
+/vendor/
+/node_modules/
+/.dist/
+
+# Fichiers de configuration locaux
+.htaccess
+apache.conf
+
+# Fichiers de déploiement
+docker-compose.yml
+init_db.sql
