@@ -1,5 +1,5 @@
 -- Connexion à la base InfinityFree
-USE `if0_38687649_cabinetmedical`;
+USE `cabinetmedical_local`;
 
 -- Table patients (version améliorée)
 CREATE TABLE IF NOT EXISTS `patients` (
@@ -24,10 +24,11 @@ CREATE TABLE IF NOT EXISTS `medecins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table rendez_vous
+-- Table rendez_vous
 CREATE TABLE IF NOT EXISTS `rendez_vous` (
     `id_rdv` INT PRIMARY KEY AUTO_INCREMENT,
     `id_patient` INT,
-    `id_medecin` INT,
+    `id_medecin` INT NULL,
     `date_rdv` DATETIME NOT NULL,
     `motif` TEXT,
     `premier_rdv` BOOLEAN DEFAULT TRUE,

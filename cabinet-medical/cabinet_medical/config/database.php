@@ -1,9 +1,9 @@
 <?php
-// Configuration de la connexion MySQL
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'cabinetmedical_local');
-define('DB_USER', 'root');
-define('DB_PASS', ''); // Mot de passe vide en local
+// Configuration de la connexion MySQL avec variables d'environnement
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'cabinetmedical_local');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
 
 // Connexion PDO avec gestion d'erreurs
 try {
@@ -19,4 +19,4 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-?>
+?> 
