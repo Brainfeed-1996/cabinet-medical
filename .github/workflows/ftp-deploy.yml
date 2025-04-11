@@ -1,0 +1,25 @@
+name: FTP Deploy PHP
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.3.1
+      with:
+        server: ftp.infinityfree.net
+        username: ${{ epiz_if0_38687649 }}
+        password: ${{ Zinkrobin1 }}
+        local-dir: ./www/  # Chemin vers vos fichiers PHP dans WAMP
+        server-dir: ./htdocs/  # Dossier cible sur InfinityFree
+        exclude: |
+          .git/
+          .github/
+          wamp/
+          tmp/

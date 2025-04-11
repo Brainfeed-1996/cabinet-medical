@@ -1,7 +1,0 @@
-option batch abort
-option confirm off
-open sftp://epiz_32687649:Zinkrobin1@ftpupload.net/ -hostkey="ssh-rsa 2048 xx:xx:xx..."
-lcd "D:\Documents\T?l?chargements\cabinet-medical"
-cd "/htdocs/"
-synchronize remote
-exit
