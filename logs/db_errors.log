@@ -1,5 +1,0 @@
-[2023-11-15 14:22:01] DB_ERROR: Connection failed - Access denied for user 'admin'@'localhost' (using password: YES)
-
-[2023-11-15 14:23:12] DB_QUERY_ERROR: You have an error in your SQL syntax near 'SELECT * FROM users WHERE id = ?' (Error #1064)
-
-[2023-11-15 14:25:33] DB_CRITICAL: Database server unreachable (Timeout after 5s)
