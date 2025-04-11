@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# Installation des dépendances système
+# 1. Mise à jour des paquets et installation des dépendances
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -8,34 +8,35 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Installation des extensions PHP nécessaires
+# 2. Activation des modules Apache (ajout de authz_core)
+RUN a2enmod rewrite headers authz_core
+
+# 3. Installation des extensions PHP
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Configuration d'Apache
-RUN a2enmod rewrite headers
-COPY apache.conf /etc/apache2/apache2.conf
-
-# Configuration du répertoire de travail
+# 4. Configuration du répertoire de travail
 WORKDIR /var/www/html
 
-# Création des répertoires nécessaires
+# 5. Création des répertoires nécessaires
 RUN mkdir -p /var/www/html/public /var/www/html/private/logs
 
-# Copie des fichiers du projet
+# 6. Copie de la configuration Apache
+COPY apache.conf /etc/apache2/apache2.conf
+
+# 7. Copie des fichiers de l'application
 COPY . /var/www/html/
 
-# Vérification du contenu du répertoire
-RUN ls -la /var/www/html/
-
-# Configuration des permissions
+# 8. Configuration des permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 777 /var/www/html/private/logs
 
-# Exposition du port 80
+# 9. Exposition du port
 EXPOSE 80
 
-# Démarrage d'Apache
+# 10. Commande de démarrage
 CMD ["apache2-foreground"]
